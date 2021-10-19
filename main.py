@@ -24,5 +24,6 @@ print(('Доля курящих мужчин равна ' + str(round(AH['sex'][
 print(('Доля курящих женщин равна ' + str(round(AH['sex'][AH['smoker'] == 'Yes'].value_counts()['Female'] / AH['sex'].value_counts()['Female'], 2))))
 
 print()
-print(AH.describe())
+
+print(AH['size'][AH['day'] == 'Sun'].mean())
 
