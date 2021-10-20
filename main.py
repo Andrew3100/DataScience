@@ -41,7 +41,29 @@ print()
 print(Fore.GREEN + 'Вопрос №4. На какое время суток приходится наибольшее количество чаевых?')
 print()
 
-# Та же фича, что и с днями недели а датасете, только по времени дня
+
+# Та же фича, что и с днями недели в датасете, только по времени дня
 all_time_list = AH['time'].unique()
 for i in range(0, len(all_time_list)):
     print('Во время ' + str(all_time_list[i]) + ' в среднем было ' + str(round(AH['tip'][AH['time'] == all_time_list[i]].mean(), 1)) + ' рублей чаевых')
+
+
+print()
+print(Fore.GREEN + 'Вопрос №5. В какой день недели был заказ к максимальным счётом?')
+
+
+
+max_total_bill = AH['total_bill'].max()
+max_total_bill_day = AH[AH['total_bill'] == max_total_bill]['day']
+
+print(max_total_bill)
+print('Заказ с максимальным счётом пришёлся на ' + str(max_total_bill_day.values[0]) + ' и составил ' + str(max_total_bill) + ' рублей')
+
+
+print()
+print(Fore.GREEN + 'Вопрос №6. Построить столбчатую диаграмму, где данные сгруппированы по дню недели и медианному значению общего счёта')
+print()
+
+print(AH['size'].hist(grid=100))
+
+plt.show()
