@@ -9,6 +9,8 @@ import math as m
 import matplotlib
 import matplotlib.pyplot as plt
 
+
+
 # import seaborn as sns
 AH = pd.read_csv('tips.csv', sep=",", header=0, index_col=False)
 
@@ -51,19 +53,16 @@ for i in range(0, len(all_time_list)):
 print()
 print(Fore.GREEN + 'Вопрос №5. В какой день недели был заказ к максимальным счётом?')
 
-
-
 max_total_bill = AH['total_bill'].max()
 max_total_bill_day = AH[AH['total_bill'] == max_total_bill]['day']
 
 print(max_total_bill)
 print('Заказ с максимальным счётом пришёлся на ' + str(max_total_bill_day.values[0]) + ' и составил ' + str(max_total_bill) + ' рублей')
 
-
 print()
 print(Fore.GREEN + 'Вопрос №6. Построить столбчатую диаграмму, где данные сгруппированы по дню недели и медианному значению общего счёта')
 print()
 
-print(AH['size'].hist(grid=100))
+print(AH.plot(x='tip', y=['total_bill'], kind='hist'))
 
 plt.show()
